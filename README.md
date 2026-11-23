@@ -52,7 +52,9 @@ AIでテストを生成・実行できても、期待値が正しい仕様に基
 ```text
 test-gate-mvp/
 ├── README.md               # 概要・実行手順
-├── CLAUDE_PROMPTS.md       # 短い工程別プロンプト5つ
+├── CLAUDE_PROMPTS.md       # Analyzer/Gate用プロンプト5つ
+├── TEST_WORKFLOW.md        # 1〜2週間のテスト実施手順
+├── TEST_WORKFLOW_PROMPTS.md # テスト実施用プロンプト5つ
 ├── SPEC_INDEX.md           # 仕様の正本と実装/既存テストの対応
 ├── OPEN_QUESTIONS.md       # 人間が決定する未規定事項
 ├── TEST_RULES.md           # 承認した期待値・根拠（Markdown表）
@@ -83,6 +85,8 @@ test-gate-mvp/
 - 後半の検証は時間が不足したら対象を絞り、結果と未実施範囲を明記する。カバレッジやミューテーションの数値だけで品質を保証したとは扱わない。
 
 **このリポジトリの担当範囲:** 上記はテスト活動全体の進行方針であり、現行の `test-gate-mvp` が5工程すべてを実装するという意味ではない。このMVPは、テストの期待値を確定する前に、仕様の根拠・承認・変更状況を `check.py` で決定的に点検する補助工程（上の全体像で△の2項目）を扱う。テスト生成・実行、カバレッジ、ミューテーション、欠陥注入は別途実施する。
+
+**実施手順とClaude向け指示:** [TEST_WORKFLOW.md](TEST_WORKFLOW.md) に5工程の具体的な進め方・成果物・記録形式をまとめ、[TEST_WORKFLOW_PROMPTS.md](TEST_WORKFLOW_PROMPTS.md) に工程別の短いプロンプトを用意した。既存の [CLAUDE_PROMPTS.md](CLAUDE_PROMPTS.md) はAnalyzer/Gate用として引き続き利用する。
 
 ## 使い方
 
