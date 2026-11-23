@@ -1,6 +1,6 @@
 # Test Gate MVP — Markdown表 + 決定的なAnalyzer/Gate
 
-> **対象:** 新プロジェクトにコピー可能な最小構成。人間が編集するのはMarkdown表、判定するのはPython標準ライブラリ。AIは情報の探索とルール候補の作成を補助するが、毎回の合否を判断しない。
+> **対象:** 新プロジェクトに clone して配置できる最小構成。人間が編集するのはMarkdown表、判定するのはPython標準ライブラリ。AIは情報の探索とルール候補の作成を補助するが、毎回の合否を判断しない。
 
 ## なぜ作ったか
 
@@ -64,8 +64,6 @@ find "$NAME" -type f -exec sed -i "s#[t]est-gate-mvp\([^.]\)#$NAME\1#g" {} +
 ## プロジェクトのgit管理から外す場合
 echo "$NAME/" >> .gitignore
 ```
-
-README・各MD内のコマンド例や説明の `test-gate-mvp/` は、読み替えて使う（一括置換は任意）。
 
 構成:
 
