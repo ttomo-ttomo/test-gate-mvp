@@ -70,7 +70,7 @@ pending/blockedもHOLD。正しい仕様への実装側DRIFTはオラクルのRE
 
 ```text
 今回は検証とREADME更新だけです。
-python3 -m unittest discover -s test-gate-mvp/tests -v
+python3 -m unittest discover -s test-gate-mvp/03-analyzer/tests -v
 python3 test-gate-mvp/03-analyzer/check.py
 を実行してください。必要なら--strictも確認してください。
 

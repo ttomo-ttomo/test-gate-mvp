@@ -49,6 +49,26 @@ AIでテストを生成・実行できても、期待値が正しい仕様に基
 
 ## ファイル
 
+各プロジェクトのルート直下にファイルを配置する。デフォルトは `test-gate-mvp`
+
+```bash
+## ファイルの配置
+NAME=test-gate-mvp
+cd /path/to/your-project
+git clone --depth 1 https://github.com/ttomo-ttomo/test-gate-mvp.git "$NAME"
+rm -rf "$NAME/.git"
+
+## clone先のフォルダ名を変えた場合のみ
+find "$NAME" -type f -exec sed -i "s#[t]est-gate-mvp\([^.]\)#$NAME\1#g" {} +
+
+## プロジェクトのgit管理から外す場合
+echo "$NAME/" >> .gitignore
+```
+
+README・各MD内のコマンド例や説明の `test-gate-mvp/` は、読み替えて使う（一括置換は任意）。
+
+構成:
+
 ```text
 test-gate-mvp/
 ├── README.md                # 全体像・実行手順
