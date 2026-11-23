@@ -51,19 +51,19 @@ AIでテストを生成・実行できても、期待値が正しい仕様に基
 
 ## ファイル
 
-各プロジェクトのルート直下にファイルを配置する。デフォルトは `test-gate-mvp`
+各プロジェクトのルート直下にファイルを配置する。デフォルトは `test-gate-mvp`（`NAME` で変更可）。
 
 ```bash
-## ファイルの配置
+# ファイルの配置
 NAME=test-gate-mvp
 cd /path/to/your-project
 git clone --depth 1 https://github.com/ttomo-ttomo/test-gate-mvp.git "$NAME"
 rm -rf "$NAME/.git"
 
-## clone先のフォルダ名を変えた場合のみ
+# clone先のフォルダ名を変えた場合のみ
 find "$NAME" -type f -exec sed -i "s#[t]est-gate-mvp\([^.]\)#$NAME\1#g" {} +
 
-## プロジェクトのgit管理から外す場合
+# プロジェクトのgit管理から外す場合
 echo "$NAME/" >> .gitignore
 ```
 
@@ -71,7 +71,7 @@ echo "$NAME/" >> .gitignore
 
 ```text
 test-gate-mvp/
-├── README.md                # 全体像・実行手順
+├── README.md                # 全体像・配置手順
 ├── 01-human-review/         # 人間が編集・承認する表
 │   ├── SPEC_INDEX.md        # 仕様の正本と実装/既存テストの対応
 │   ├── OPEN_QUESTIONS.md    # 未規定事項の決定
@@ -92,7 +92,7 @@ test-gate-mvp/
 
 優先順位・工程・手順・Claude向けプロンプトは [02-short-term-test/README.md](02-short-term-test/README.md) を参照。
 
-**このリポジトリの担当範囲:** 上記はテスト活動全体の進行方針であり、現行の `test-gate-mvp` が5工程すべてを実装するという意味ではない。このMVPは、テストの期待値を確定する前に、仕様の根拠・承認・変更状況を `check.py` で決定的に点検する補助工程（上の全体像で△の2項目）を扱う。テスト生成・実行、カバレッジ、ミューテーション、欠陥注入は別途実施する。
+**このリポジトリの担当範囲:** `02-short-term-test/` の工程はテスト活動全体の進行方針であり、現行の `test-gate-mvp` が5工程すべてを実装するという意味ではない。このMVPは、テストの期待値を確定する前に、仕様の根拠・承認・変更状況を `check.py` で決定的に点検する補助工程（上の全体像で△の2項目）を扱う。テスト生成・実行、カバレッジ、ミューテーション、欠陥注入は別途実施する。
 
 ## 導入方針
 
