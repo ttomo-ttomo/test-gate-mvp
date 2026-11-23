@@ -30,9 +30,9 @@
 ## 更新手順
 
 1. AIが根拠のある候補行を `pending` で追加する。仕様アンカーは原文をそのまま引用する。
-2. `python3 test-gate-mvp/check.py --stamp R-001` で現在の仕様ファイルのSHA-256を表に記録する。**この操作はpending行のみ可能で、approvedには変更しません。**
+2. `python3 test-gate-mvp/03-analyzer/check.py --stamp R-001` で現在の仕様ファイルのSHA-256を表に記録する。**この操作はpending行のみ可能で、approvedには変更しません。**
 3. 仕様判断者が期待値の導出・適用条件・未決事項を確認して `approved` に変更する。承認者/議論は既存のPR/Issueに記録する。
-4. `python3 test-gate-mvp/check.py` を実行。必要なら `--strict` で未解決のHOLD/DRIFTを終了コード1にする。
+4. `python3 test-gate-mvp/03-analyzer/check.py` を実行。必要なら `--strict` で未解決のHOLD/DRIFTを終了コード1にする。
 5. 仕様に変更があればSHA不一致でHOLD。再審査するために `pending` へ戻し、再スタンプ・再承認する。
 
 **重要:** 表の出典SHA256と仕様アンカーの存在が確認できても、期待値が仕様から正しく導けるかは機械的に証明できません。ALLOWは「承認された期待値の出典が現在も同じ」という限定した意味です。

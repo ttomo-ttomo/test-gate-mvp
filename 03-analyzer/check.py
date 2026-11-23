@@ -79,7 +79,7 @@ def inspect_literal(root: Path, filename: str, anchor: str):
 
 
 def load_questions(root: Path):
-    _, rows = table(root / "test-gate-mvp" / "OPEN_QUESTIONS.md", QUESTION_COLUMNS)
+    _, rows = table(root / "test-gate-mvp" / "01-human-review" / "OPEN_QUESTIONS.md", QUESTION_COLUMNS)
     questions = {}
     for row, _ in rows:
         name = row["ID"]
@@ -94,7 +94,7 @@ def load_questions(root: Path):
 
 
 def read_rules(root: Path):
-    path = root / "test-gate-mvp" / "TEST_RULES.md"
+    path = root / "test-gate-mvp" / "01-human-review" / "TEST_RULES.md"
     lines, rows = table(path, RULE_COLUMNS)
     ids = set()
     for row, _ in rows:
@@ -182,7 +182,7 @@ def run(root: Path, strict: bool):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Markdownベースの最小Analyzer + Gate")
-    parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parent.parent)
+    parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parent.parent.parent)
     parser.add_argument("--stamp", metavar="RULE_ID", help="pending行に現在の仕様SHA256を記録")
     parser.add_argument("--strict", action="store_true", help="HOLD・実装DRIFT・ルール0件は終了1")
     args = parser.parse_args(argv)

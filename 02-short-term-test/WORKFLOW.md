@@ -4,8 +4,8 @@
 
 ## 位置づけ・責任
 
-- [README.md](README.md) の「テスト計画の全体像」にある○の4項目（テスト生成、分岐、ミューテーション、欠陥注入）と、対象を決めるための**簡易**リスク評価を進める手順。
-- 既存の [ANALYZER_AND_GATE.md](ANALYZER_AND_GATE.md) / `check.py` は「仕様・期待値の根拠確認」の補助工程であり、テスト生成器・カバレッジ収集器・ミューテーションツール・欠陥注入ツールではない。
+- [README.md](../README.md) の「テスト計画の全体像」にある○の4項目（テスト生成、分岐、ミューテーション、欠陥注入）と、対象を決めるための**簡易**リスク評価を進める手順。
+- 既存の [ANALYZER_AND_GATE.md](../03-analyzer/ANALYZER_AND_GATE.md) / `check.py` は「仕様・期待値の根拠確認」の補助工程であり、テスト生成器・カバレッジ収集器・ミューテーションツール・欠陥注入ツールではない。
 - AIは候補整理・コード作成・調査を支援。**仕様の正本、未規定事項の決定、期待値の承認、最終判断は人間**。実行結果・集計値は実際のテストランナー等のツール出力で確認し、AIの印象によるPASSを採用しない。
 - 既存のテストランナーを優先し、新たな基盤構築・CI導入は原則しない。ツールがない場合は実行不能として記録し、数値を作らない。
 
@@ -28,7 +28,7 @@
 1. 重要な故障を最大5件ほど列挙する。例として「別ユーザーの履歴が参照できる」はリスク候補であり、実際の仕様や欠陥があると断定するものではない。
 2. 影響度（高/中/低）、発生しそうな理由・不確実性（高/中/低）、根拠の所在を整理する。スコアや確率を根拠なく捏造しない。
 3. 人間が最初に検証する1機能と受入条件を選び、範囲外も明記する。
-4. 仕様不明なら [OPEN_QUESTIONS.md](OPEN_QUESTIONS.md) に未決事項を記録し、仕様として創作しない。
+4. 仕様不明なら [OPEN_QUESTIONS.md](../01-human-review/OPEN_QUESTIONS.md) に未決事項を記録し、仕様として創作しない。
 
 **記録するMarkdown表（作業先プロジェクトのIssue/PRや検証ノートに記載。台帳ファイルの新設は任意）:**
 
@@ -40,9 +40,9 @@
 
 ## 工程2 — 受入条件からテスト生成・実行
 
-1. [SPEC_INDEX.md](SPEC_INDEX.md) で仕様の正本・実装・既存テストを紐付ける。参考実装や既存assertを正規仕様と取り違えない。
-2. [CLAUDE_PROMPTS.md](CLAUDE_PROMPTS.md) の Prompt 1・2 に従い、[TEST_RULES.md](TEST_RULES.md) に根拠のある期待値を `pending` で追加する。仕様未規定は `OPEN_QUESTIONS.md` へ。
-3. 人間が期待値と根拠をレビューし、`approved` にする。`check.py --stamp <ID>` はSHA記録だけで承認ではない。`python3 test-gate-mvp/check.py --strict` で対象行がHOLDでないことを確認する。**ALLOWは意味的な正しさを証明しない**。
+1. [SPEC_INDEX.md](../01-human-review/SPEC_INDEX.md) で仕様の正本・実装・既存テストを紐付ける。参考実装や既存assertを正規仕様と取り違えない。
+2. [CLAUDE_PROMPTS.md](../03-analyzer/CLAUDE_PROMPTS.md) の Prompt 1・2 に従い、[TEST_RULES.md](../01-human-review/TEST_RULES.md) に根拠のある期待値を `pending` で追加する。仕様未規定は `OPEN_QUESTIONS.md` へ。
+3. 人間が期待値と根拠をレビューし、`approved` にする。`check.py --stamp <ID>` はSHA記録だけで承認ではない。`python3 test-gate-mvp/03-analyzer/check.py --strict` で対象行がHOLDでないことを確認する。**ALLOWは意味的な正しさを証明しない**。
 4. 承認した受入条件に対応する正常・境界・異常（仕様で規定されたもの）を、プロジェクトの既存テストランナーで実行できるテストにする。必要最小限のフィクスチャを用意し、テストと受入条件IDを対応付ける。
 5. 実コマンド・終了コード・PASS/FAIL/SKIP・失敗の再現方法を保存する。テストが失敗しても、通すためだけに期待値を変更しない。
 
@@ -87,4 +87,4 @@ Markdown表を使い、AIの自由判定で合否を付けない。作業先プ�
 
 ## Claudeへの渡し方
 
-[TEST_WORKFLOW_PROMPTS.md](TEST_WORKFLOW_PROMPTS.md) の Prompt A → E を**1つずつ**渡す。承認・実行結果を確認してから次へ進む。既存Analyzer/Gateの修正が必要な場合だけ [CLAUDE_PROMPTS.md](CLAUDE_PROMPTS.md) の対応工程を使用する。
+[PROMPTS.md](PROMPTS.md) の Prompt A → E を**1つずつ**渡す。承認・実行結果を確認してから次へ進む。既存Analyzer/Gateの修正が必要な場合だけ [CLAUDE_PROMPTS.md](../03-analyzer/CLAUDE_PROMPTS.md) の対応工程を使用する。

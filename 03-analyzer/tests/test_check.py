@@ -26,14 +26,14 @@ class GateTests(unittest.TestCase):
         temp = tempfile.TemporaryDirectory()
         self.addCleanup(temp.cleanup)
         self.root = Path(temp.name)
-        for directory in ("docs", "src", "test-gate-mvp"):
-            (self.root / directory).mkdir()
+        for directory in ("docs", "src", "test-gate-mvp/01-human-review"):
+            (self.root / directory).mkdir(parents=True)
         self.spec = self.root / "docs/spec.md"
         self.code = self.root / "src/app.py"
         self.spec.write_text("HTTP 400を返す\n", encoding="utf-8")
         self.code.write_text("return 400\n", encoding="utf-8")
-        self.rules = self.root / "test-gate-mvp/TEST_RULES.md"
-        (self.root / "test-gate-mvp/OPEN_QUESTIONS.md").write_text("# Questions\n\n" + QUESTIONS, encoding="utf-8")
+        self.rules = self.root / "test-gate-mvp/01-human-review/TEST_RULES.md"
+        (self.root / "test-gate-mvp/01-human-review/OPEN_QUESTIONS.md").write_text("# Questions\n\n" + QUESTIONS, encoding="utf-8")
         self.write_rule()
 
     def write_rule(self, status="approved", sha=None, question="-", code_anchor="return 400"):

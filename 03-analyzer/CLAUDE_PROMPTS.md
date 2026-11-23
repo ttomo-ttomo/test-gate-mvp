@@ -38,7 +38,7 @@ TEST_RULES.mdの固定列にpendingで追加してください。
 
 ```text
 今回はAnalyzer部分だけを扱います。
-test-gate-mvp/check.pyを読み、TEST_RULES.mdから仕様/実装のファイルとアンカーを
+test-gate-mvp/03-analyzer/check.pyを読み、TEST_RULES.mdから仕様/実装のファイルとアンカーを
 決定的に検査できることを確認・必要なら最小修正してください。
 仕様ファイルの変更と、実装アンカーの欠落/複数出現を区別して報告してください。
 出典が読めない・解析できないときはUNVERIFIED/DRIFTとし、PASSにしないでください。
@@ -71,7 +71,7 @@ pending/blockedもHOLD。正しい仕様への実装側DRIFTはオラクルのRE
 ```text
 今回は検証とREADME更新だけです。
 python3 -m unittest discover -s test-gate-mvp/tests -v
-python3 test-gate-mvp/check.py
+python3 test-gate-mvp/03-analyzer/check.py
 を実行してください。必要なら--strictも確認してください。
 
 検証観点は、同一入力同一出力、未承認HOLD、仕様変更HOLD、未決事項HOLD、

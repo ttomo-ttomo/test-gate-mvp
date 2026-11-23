@@ -1,6 +1,6 @@
 # Minimal Consistency Analyzer / Minimal Oracle Validation Gate — 判定仕様
 
-> AIによる毎回の判定はしない。入力は人間が編集する[TEST_RULES.md](TEST_RULES.md)と[OPEN_QUESTIONS.md](OPEN_QUESTIONS.md)。判定はPython標準ライブラリの[check.py](check.py)で決定的に実行する。現時点では**仕様の意味解析、コードの挙動解析、テスト実行の合否判定は対象外**。
+> AIによる毎回の判定はしない。入力は人間が編集する[TEST_RULES.md](../01-human-review/TEST_RULES.md)と[OPEN_QUESTIONS.md](../01-human-review/OPEN_QUESTIONS.md)。判定はPython標準ライブラリの[check.py](check.py)で決定的に実行する。現時点では**仕様の意味解析、コードの挙動解析、テスト実行の合否判定は対象外**。
 
 ## Minimal Consistency Analyzer
 
