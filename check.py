@@ -14,7 +14,8 @@ from pathlib import Path
 
 RULE_COLUMNS = ["ID", "仕様ファイル", "仕様アンカー", "出典SHA256", "実装ファイル",
                 "実装アンカー", "期待値", "承認", "未決ID"]
-QUESTION_COLUMNS = ["ID", "対象", "未決事項", "状態", "決定先"]
+QUESTION_COLUMNS = ["ID", "機能/対象", "未決の問い", "現時点でわかること（出典）", "選択肢と影響",
+                    "決定者", "状態", "決定・正本への反映先"]
 APPROVALS = {"pending", "approved", "blocked"}
 QUESTION_STATES = {"OPEN", "DECIDED", "CANCELLED", "UNCONFIRMED", "未確認"}
 

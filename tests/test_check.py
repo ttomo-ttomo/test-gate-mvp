@@ -14,7 +14,11 @@ sys.modules[SPEC.name] = gate
 SPEC.loader.exec_module(gate)
 
 HEADER = "| ID | 仕様ファイル | 仕様アンカー | 出典SHA256 | 実装ファイル | 実装アンカー | 期待値 | 承認 | 未決ID |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n"
-QUESTIONS = "| ID | 対象 | 未決事項 | 状態 | 決定先 |\n| --- | --- | --- | --- | --- |\n| Q-001 | API | 境界 | OPEN | - |\n"
+QUESTIONS = (
+    "| ID | 機能/対象 | 未決の問い | 現時点でわかること（出典） | 選択肢と影響 | 決定者 | 状態 | 決定・正本への反映先 |\n"
+    "| --- | --- | --- | --- | --- | --- | --- | --- |\n"
+    "| Q-001 | API | 境界 | - | - | - | OPEN | - |\n"
+)
 
 
 class GateTests(unittest.TestCase):
